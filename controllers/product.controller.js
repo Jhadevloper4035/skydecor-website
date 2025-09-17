@@ -1,8 +1,15 @@
-const Product = require("../models/product.model.js");
+const Product = require("../models/product.model.js");;
+const path = require("path");
+const puppeteer = require("puppeteer");
+const ejs = require("ejs");
+
+
 
 exports.getProducts = async (req, res) => {
   try {
-    let { category, subCategory, texture, page, limit, sort } = req.query;
+    
+    const { productType } = req.params;
+    let { category, subCategory, texture, designName, page, limit, sort } = req.query;
 
     // Helper: convert query param to array
     const parseArray = (param) => {
@@ -11,10 +18,11 @@ exports.getProducts = async (req, res) => {
     };
 
     // Build filters
-    const query = {};
+    const query = { productType }; // ✅ always filter by productType
     if (category?.length) query.category = { $in: parseArray(category) };
     if (subCategory?.length) query.subCategory = { $in: parseArray(subCategory) };
     if (texture?.length) query.texture = { $in: parseArray(texture) };
+    if (designName?.length) query.designName = { $in: parseArray(designName) };
 
     // Pagination
     page = parseInt(page, 10) || 1;
@@ -25,20 +33,22 @@ exports.getProducts = async (req, res) => {
     let sortOption = { createdAt: -1 };
     if (sort) {
       sortOption = {};
-      sort.split(",").map((s) => s.trim()).forEach((field) => {
-        if (field.startsWith("-")) sortOption[field.substring(1)] = -1;
-        else sortOption[field] = 1;
-      });
+      sort.split(",")
+        .map((s) => s.trim())
+        .forEach((field) => {
+          if (field.startsWith("-")) sortOption[field.substring(1)] = -1;
+          else sortOption[field] = 1;
+        });
     }
 
-    // Execute queries in parallel
-    const [products, total, categories, subCategories, textures , designs] = await Promise.all([
+    // Execute queries in parallel (scoped by productType)
+    const [products, total, categories, subCategories, textures, designs] = await Promise.all([
       Product.find(query).sort(sortOption).skip(skip).limit(limit),
       Product.countDocuments(query),
-      Product.distinct("category"),
-      Product.distinct("subCategory"),
-      Product.distinct("texture"),
-      Product.distinct("designName"),
+      Product.distinct("category", { productType }),
+      Product.distinct("subCategory", { productType }),
+      Product.distinct("texture", { productType }),
+      Product.distinct("designName", { productType }),
     ]);
 
     // Current selected filters
@@ -46,16 +56,19 @@ exports.getProducts = async (req, res) => {
       category: parseArray(category),
       subCategory: parseArray(subCategory),
       texture: parseArray(texture),
+      designName: parseArray(designName),
     };
+
+    filters.productType = productType
 
     // Pagination pages
     const pages = Math.ceil(total / limit);
 
-    // AJAX request → render only partial (for shop-area)
+    // AJAX request → render only partial
     if (req.xhr || req.headers["x-requested-with"] === "XMLHttpRequest") {
       return res.render(
-        "partials/product-card", // this partial includes #shop-area content
-        { products, total, page, pages, categories, subCategories, textures, filters, count: products.length },
+        "partials/product-card",
+        { products, total, page, pages, categories, subCategories, textures, designs, filters, count: products.length },
         (err, html) => {
           if (err) return res.status(500).send("Error rendering partial");
           res.send(html);
@@ -73,6 +86,7 @@ exports.getProducts = async (req, res) => {
       categories,
       subCategories,
       textures,
+      designs,
       filters,
       count: products.length,
     });
@@ -81,6 +95,7 @@ exports.getProducts = async (req, res) => {
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 };
+
 
 
 
@@ -161,3 +176,48 @@ exports.getAllCategoryProduct = async (req, res) => {
     });
   }
 };
+
+
+
+exports.downloadProductPdf = async (req, res) => {
+  try {
+    const { productCode } = req.params;
+    if (!productCode) {
+      return res.status(400).json({ success: false, message: "Product code is required" });
+    }
+
+    const product = await Product.findOne({ productCode });
+    if (!product) {
+      return res.status(404).json({ success: false, message: "Product not found" });
+    }
+
+    // Load and render EJS template
+    const templatePath = path.join(__dirname, "../templates/productTemplate.ejs");
+    const html = await ejs.renderFile(templatePath, { product });
+
+    // Generate PDF
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.setContent(html, { waitUntil: "networkidle0" });
+
+    const pdfBuffer = await page.pdf({
+      format: "A4",
+      printBackground: true,
+      margin: { top: "40px", bottom: "40px", left: "30px", right: "30px" }
+    });
+
+    await browser.close();
+
+    // Send to client
+    res.setHeader("Content-Disposition", `attachment; filename=${product.productCode}.pdf`);
+    res.setHeader("Content-Type", "application/pdf");
+    res.send(pdfBuffer);
+
+  } catch (error) {
+    console.error("❌ PDF Generation Error:", error);
+    res.status(500).json({ success: false, message: "Error generating PDF" });
+  }
+};
+
+
+

@@ -138,7 +138,7 @@
                                 </div>
                             </div>
 
-                            <form id="filterForm" action="/api/product" method="get">
+                            <form id="filterForm" action="/api/product/<%= filters.productType %>" method="get">
                                 <!-- Product Categories -->
                                 <div class="sidebar-widget mt-50">
                                     <h4 class="pro-sidebar-title">Product Categories</h4>
@@ -152,10 +152,7 @@
                                                             ? 'checked' : '' %> />
                                                         <a href="javascript:void(0)">
                                                             <%= cat %>
-                                                                <span>
-                                                                    <%= products.filter(p=> p.category === cat).length
-                                                                        %>
-                                                                </span>
+                                                                
                                                         </a>
                                                         <span class="checkmark"></span>
                                                     </div>
@@ -175,14 +172,9 @@
                                                     <div class="sidebar-widget-list-left">
                                                         <input type="checkbox" value="<%= sc %>" name="subCategory[]"
                                                             <%=filters.subCategory && filters.subCategory.includes(sc)
-                                                            ? 'checked' : '' %>
-                                                        />
+                                                            ? 'checked' : '' %> />
                                                         <a href="javascript:void(0)">
                                                             <%= sc %>
-                                                                <span>
-                                                                    <%= products.filter(p=> p.subCategory ===
-                                                                        sc).length %>
-                                                                </span>
                                                         </a>
                                                         <span class="checkmark"></span>
                                                     </div>
@@ -202,14 +194,9 @@
                                                     <div class="sidebar-widget-list-left">
                                                         <input type="checkbox" value="<%= texture %>" name="texture[]"
                                                             <%=filters.texture && filters.texture.includes(texture)
-                                                            ? 'checked' : '' %>
-                                                        />
+                                                            ? 'checked' : '' %> />
                                                         <a href="javascript:void(0)">
                                                             <%= texture %>
-                                                                <span>
-                                                                    <%= products.filter(p=> p.texture ===
-                                                                        texture).length %>
-                                                                </span>
                                                         </a>
                                                         <span class="checkmark"></span>
                                                     </div>
@@ -218,7 +205,37 @@
                                         </ul>
                                     </div>
                                 </div>
+
+                                <!-- Product Designs -->
+                                <% if (designs && designs.length > 1) { %>  
+                                    <div class="sidebar-widget mt-50">
+                                        <h4 class="pro-sidebar-title">Product Designs  </h4>
+                                        <div class="sidebar-widget-list mt-20">
+                                            <ul>
+                                                <% designs.forEach(function(design) { %>
+                                                    <% if (design && design.trim() !=="" ) { %> <!-- ✅ skip empty -->
+                                                        <li>
+                                                            <div class="sidebar-widget-list-left">
+                                                                <input type="checkbox" value="<%= design %>"
+                                                                    name="designName[]" <%=filters.designName &&
+                                                                    filters.designName.includes(design) ? 'checked' : ''
+                                                                    %> />
+                                                                <a href="javascript:void(0)">
+                                                                    <%= design %>
+                                                                </a>
+                                                                <span class="checkmark"></span>
+                                                            </div>
+                                                        </li>
+                                                        <% } %>
+                                                            <% }) %>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <% } %>
                             </form>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -363,7 +380,6 @@
 
             <script>
 
-                
                 document.addEventListener("DOMContentLoaded", function () {
                     const exampleModal = document.getElementById("exampleModal");
                     exampleModal.addEventListener("show.bs.modal", function (event) {
@@ -393,6 +409,8 @@
                     });
                 });
 
+
+
                 document.addEventListener("DOMContentLoaded", function () {
                     const filterForm = document.querySelector("#filterForm");
                     const shopArea = document.querySelector("#shop-area");
@@ -404,31 +422,33 @@
                         shopArea.innerHTML = Array.from({ length: count })
                             .map(
                                 () => `
-            <div class="product-card col-lg- col-md-4  col-sm-6     skeleton">
-                <div class="image"></div>
-                <div class="text-line short"></div>
-                <div class="text-line"></div>
-                <div class="text-line short"></div>
-            </div>
-        `
+                        <div class="product-card col-lg-3 col-md-4 col-sm-6 skeleton">
+                            <div class="image"></div>
+                            <div class="text-line short"></div>
+                            <div class="text-line"></div>
+                            <div class="text-line short"></div>
+                        </div>
+                    `
                             )
                             .join("");
                     }
 
                     // Fetch products via AJAX
                     function fetchProducts(url = null) {
-                        const checkboxes = filterForm.querySelectorAll(
-                            "input[type=checkbox]:checked"
-                        );
+                        const checkboxes = filterForm.querySelectorAll("input[type=checkbox]:checked");
                         const params = [];
 
                         checkboxes.forEach((cb) => {
                             const key = cb.name.replace("[]", ""); // remove []
-                            const value = encodeURIComponent(cb.value); // encode value
+                            const value = encodeURIComponent(cb.value);
                             params.push(`${key}=${value}`);
                         });
 
-                        const fetchUrl = url || `/api/product?${params.join("&")}`;
+                        // ✅ Get productType from form action (/api/product/:productType)
+                        const baseUrl = filterForm.getAttribute("action");
+
+                        // Build final fetch URL
+                        const fetchUrl = url || `${baseUrl}?${params.join("&")}`;
 
                         // Show skeleton while loading
                         showSkeleton();
@@ -456,10 +476,14 @@
                         const link = e.target.closest(".pagination a");
                         if (link) {
                             e.preventDefault();
-                            fetchProducts(link.href);
+                            fetchProducts(link.href); // ✅ link already has productType + query
                         }
                     });
                 });
+
+
+
+
             </script>
 </body>
 </html>

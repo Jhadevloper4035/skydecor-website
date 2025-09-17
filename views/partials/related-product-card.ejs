@@ -7,16 +7,13 @@
                         <img class="default-img" src="<%= product.image %>" alt="<%= product.productName %>">
                         <img class="hover-img" src="<%= product.image %>" alt="<%= product.productName %>">
                     </a>
-                    <% if (product.discount) { %>
-                        <span class="pink">-<%= product.discount %>%</span>
-                        <% } %>
                             <div class="product-action">
                                 <div class="pro-same-action pro-wishlist">
-                                    <a title="Wishlist" href="#"><i class="pe-7s-like"></i></a>
+                                   <a title="Wishlist" href="/api/product/download/<%= product.productCode %>"><i class="pe-7s-download"></i> </a>
                                 </div>
                                 <div class="pro-same-action pro-cart">
-                                    <a title="Add To Cart" href="#"> View
-                                        Product </a>
+                                <a title="Add To Cart" href="/api/product/detail/<%= product.productCode %>"> View Product </a>
+
                                 </div>
 
                                 <div class="pro-same-action pro-quickview">
@@ -45,3 +42,5 @@
             <% } else { %>
                 <p class="text-center">No products found.</p>
                 <% } %>
+
+    

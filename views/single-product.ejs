@@ -1,29 +1,25 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Flone - Minimal eCommerce HTML Template</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Skydecor </title>
+        <meta name="description" content>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSS
-	============================================ -->
+        <!-- CSS ============================================ -->
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <!-- Icon Font CSS -->
-    <link rel="stylesheet" href="/css/icons.min.css">
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="/css/plugins.css">
-    <!-- Main Style CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <!-- Icon Font CSS -->
+        <link rel="stylesheet" href="/css/icons.min.css">
+        <!-- Plugins CSS -->
+        <link rel="stylesheet" href="/css/plugins.css">
+        <!-- Main Style CSS -->
+        <link rel="stylesheet" href="/css/style.css">
 
-
-    <style>
+        <style>
         .dec-img-wrap img {
             width: 100%;
             height: 500px;
@@ -36,20 +32,142 @@
             justify-content: center;
             align-items: center;
         }
+
+
+        .blog-share span {
+            color: #333;
+            display: inline-block;
+            font-size: 15px;
+            margin-right: 12px;
+            margin-top: 3px;
+            text-transform: capitalize;
+        }
+
+        .blog-share .share-social {
+            display: inline-block;
+        }
+
+        @media only screen and (max-width: 767px) {
+            .blog-share .share-social {
+                margin-top: 4px;
+            }
+        }
+
+        .blog-share .share-social ul li {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .blog-share .share-social ul li:last-child {
+            margin-right: 0;
+        }
+
+        .blog-share .share-social ul li a {
+            border-radius: 50px;
+            color: #fff;
+            display: inline-block;
+            font-size: 14px;
+            height: 30px;
+            line-height: 28px;
+            text-align: center;
+            width: 30px;
+        }
+
+        @media only screen and (max-width: 767px) {
+            .blog-share .share-social ul li a {
+                font-size: 12px;
+                height: 25px;
+                line-height: 23px;
+                width: 25px;
+            }
+        }
+
+        .blog-share .share-social ul li a.facebook {
+            background-color: #3b5998;
+            border: 1px solid #3b5998;
+        }
+
+        .blog-share .share-social ul li a.facebook:hover {
+            background-color: transparent;
+            color: #3b5998;
+        }
+
+        .blog-share .share-social ul li a.twitter {
+            background-color: #55acee;
+            border: 1px solid #55acee;
+        }
+
+        .blog-share .share-social ul li a.twitter:hover {
+            background-color: transparent;
+            color: #55acee;
+        }
+
+        .blog-share .share-social ul li a.instagram {
+            background-color: #c32aa3;
+            border: 1px solid #c32aa3;
+        }
+
+        .blog-share .share-social ul li a.instagram:hover {
+            background-color: transparent;
+            color: #c32aa3;
+        }
+
+        .blog-wrap-2:hover .blog-img-2 img {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+
+        .product-details-content .pro-details-meta span {
+            text-transform: uppercase;
+        }
+
+
+        .pro-details-meta {
+            border-bottom: 1px solid #333;
+            padding: 5px 0px;
+
+        }
+
+
+        .pro-details-meta span {
+            width: 60%;
+
+        }
+
+        .pro-details-meta ul {
+            width: 40%;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+        }
+
+
+        .product-details-content h2 {
+        line-height: 1.6;
+        text-transform: uppercase;
+}
+
+
+.dec-img-wrap img {
+    width: 100%;
+    height: 560px;
+    width: 300px;
+}
+
+
+.product-details-content .pro-details-quality .pro-details-cart a {
+
+    display: flex;
+}
+
+
     </style>
 
+    </head>
 
+    <body>
 
-
-
-
-</head>
-
-<body>
-
-
-    <%- include("partials/header") %>
-
+        <%- include("partials/header") %>
 
         <div class="breadcrumb-area pt-35 pb-35 bg-gray-3">
             <div class="container">
@@ -64,14 +182,14 @@
             </div>
         </div>
 
-
         <div class="shop-area pt-100 pb-100">
             <div class="container">
                 <div class="row">
                     <!-- Product Image -->
                     <div class="col-lg-5 col-md-5">
                         <div class="product-details dec-img-wrap">
-                            <img src="<%= product.image %>" alt="<%= product.productName %>">
+                            <img src="<%= product.image %>"
+                                alt="<%= product.productName %>">
                         </div>
                     </div>
 
@@ -79,8 +197,10 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="product-details-content ml-70">
                             <h2 class="mb-4">
-                                <%= product.productType %>-<%= product.productName %>-<%= product.category %>-<%=
-                                                product.texture %>
+                                <%= product.productType %>-<%=
+                                product.productName %>-<%= product.category
+                                %>-<%=
+                                product.texture %>
                             </h2>
 
                             <!-- Product Info -->
@@ -130,6 +250,15 @@
                             </div>
 
                             <div class="pro-details-meta">
+                                <span>Deisgn :</span>
+                                <ul>
+                                    <li>
+                                        <%= product.designName %>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="pro-details-meta">
                                 <span>Size :</span>
                                 <ul>
                                     <li>
@@ -156,20 +285,15 @@
                                 </ul>
                             </div>
 
-                            <!-- Social -->
-                            <div class="pro-details-social mt-4">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-
                             <!-- Cart / Action -->
-                            <div class="pro-details-quality mt-4">
+                            <div class="pro-details-quality mt-4 "
+                                style="margin-left: -10px;">
                                 <div class="pro-details-cart btn-hover">
-                                    <a href="/inquiry/<%= product.productCode %>">Enquire Now</a>
+                                    <a
+                                        href="/api/product/download/<%= product.productCode %>"> 
+                                        Download
+                                        Product
+                                        Detail</a>
                                 </div>
                             </div>
 
@@ -180,9 +304,7 @@
             </div>
         </div>
 
-
-
-        <div class="description-review-area pb-90">
+        <!-- <div class="description-review-area pb-90">
             <div class="container">
                 <div class="description-review-wrapper">
                     <div class="description-review-topbar nav">
@@ -319,8 +441,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
+        </div> -->
 
         <div class="related-product-area pb-95">
             <div class="container">
@@ -329,170 +450,197 @@
                 </div>
                 <div class="related-product-active owl-carousel owl-dot-none">
 
-
                     <% if (relatedProducts && relatedProducts.length> 0) { %>
-                        <% relatedProducts.forEach(rp=> { %>
-                            <div class="product-wrap">
-                                <div class="product-img">
-                                    <a href="/product/<%= rp.productCode %>">
-                                        <img class="default-img" src="<%= rp.image %>" alt="<%= rp.productName %>">
-                                        <img class="hover-img" src="<%= rp.image %>" alt="<%= rp.productName %>">
-                                    </a>
-                                    <div class="product-action">
-                                        <div class="pro-same-action pro-wishlist">
-                                            <a title="Wishlist" href="#"><i class="pe-7s-like"></i></a>
-                                        </div>
-                                        <div class="pro-same-action pro-cart">
-                                            <a title="`<%= rp.productType %>-<%= rp.productName %>-<%= rp.category %>-<%=
-                                                rp.texture %>`" href="/api/product/<%= rp.productCode %>"> View product</a>
-                                        </div>
-                                        <div class="pro-same-action pro-quickview">
-                                    <a title="Quick View" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                        data-name="<%= rp.productName %>" data-image="<%= rp.image %>"
+                    <% relatedProducts.forEach(rp=> { %>
+                    <div class="product-wrap">
+                        <div class="product-img">
+                            <a href="/product/<%= rp.productCode %>">
+                                <img class="default-img" src="<%= rp.image %>"
+                                    alt="<%= rp.productName %>">
+                                <img class="hover-img" src="<%= rp.image %>"
+                                    alt="<%= rp.productName %>">
+                            </a>
+                            <div class="product-action">
+                                <div class="pro-same-action pro-wishlist">
+                                    <a title="Wishlist"
+                                        href="/api/product/download/<%= rp.productCode %>"><i
+                                            class="pe-7s-download"></i> </a>
+                                </div>
+                                <div class="pro-same-action pro-cart">
+                                    <a
+                                        title="`<%= rp.productType %>-<%= rp.productName %>-<%= rp.category %>-<%=
+                                                rp.texture %>`"
+                                        href="/api/product/detail/<%= rp.productCode %>">
+                                        View
+                                        product</a>
+                                </div>
+                                <div class="pro-same-action pro-quickview">
+                                    <a title="Quick View" href="#"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal"
+                                        data-productType="<%= rp.productType %>"
+                                        data-name="<%= rp.productName %>"
+                                        data-image="<%= rp.image %>"
                                         data-category="<%= rp.category %>"
                                         data-subcategory="<%= rp.subCategory %>"
-                                        data-texture="<%= rp.texture %>" data-size="<%= rp.size %>"
-                                        data-thickness="<%= rp.thickness %>" data-width="<%= rp.width %>">
+                                        data-texture="<%= rp.texture %>"
+                                        data-design="<%= rp.designName %>"
+                                        data-size="<%= rp.size %>"
+                                        data-thickness="<%= rp.thickness %>"
+                                        data-width="<%= rp.width %>">
                                         <i class="pe-7s-look"></i>
                                     </a>
                                 </div>
-                                    </div>
-                                </div>
-                                <div class="product-content text-center">
-                                    <h3><a href="/product/<%= rp.productCode %>">
-                                           <%= rp.productType %>-<%= rp.productName %>-<%= rp.category %>-<%=
-                                                rp.texture %>
-                                        </a></h3>
-                                </div>
                             </div>
-                            <% }) %>
-                                <% } %>
-
-
+                        </div>
+                        <div class="product-content text-center">
+                            <h3><a href="/product/<%= rp.productCode %>">
+                                    <%= rp.productType %>-<%= rp.productName
+                                    %>-<%= rp.category %>-<%=
+                                    rp.texture %>
+                                </a></h3>
+                        </div>
+                    </div>
+                    <% }) %>
+                    <% } %>
 
                 </div>
             </div>
         </div>
 
-
         <%- include("partials/footer") %>
 
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg modal-dialog-centered"
+                role="document">
+                <div class="modal-content">
+                    <!-- Header -->
+                    <div class="modal-header">
+                        <h2 class="modal-title d-none mb-0" id="modalProduct">
+                            Product Name Here
+                        </h2>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
 
-
-
-           <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <!-- Header -->
-                        <div class="modal-header">
-                            <h2 class="modal-title d-none mb-0" id="modalProduct">
-                                Product Name Here
-                            </h2>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-
-                        <!-- Body -->
-                        <div class="modal-body">
-                            <div class="row">
-                                <!-- Left: Image -->
-                                <div class="col-md-5 col-sm-12">
-                                    <div class="tab-content quickview-big-img">
-                                        <div class="tab-pane fade show active">
-                                            <img id="modalProductImage" src="/img/product/quickview-l1.jpg"
-                                                alt="Product Image" class="img-fluid" />
-                                        </div>
+                    <!-- Body -->
+                    <div class="modal-body">
+                        <div class="row">
+                            <!-- Left: Image -->
+                            <div class="col-md-5 col-sm-12">
+                                <div class="tab-content quickview-big-img">
+                                    <div class="tab-pane fade show active">
+                                        <img id="modalProductImage"
+                                            src="/img/product/quickview-l1.jpg"
+                                            alt="Product Image"
+                                            class="img-fluid" />
                                     </div>
                                 </div>
+                            </div>
 
-                                <!-- Right: Product Details -->
-                                <div class="col-md-7 col-sm-12">
-                                    <div class="product-details-content quickview-content">
-                                        <h2 class="mb-4" id="modalProductTitle"></h2>
+                            <!-- Right: Product Details -->
+                            <div class="col-md-7 col-sm-12">
+                                <div
+                                    class="product-details-content quickview-content">
+                                    <h2 class="mb-4"
+                                        id="modalProductTitle"></h2>
 
-                                        <!-- Rating Example -->
-                                        <div class="pro-details-rating-wrap mt-2 mb-3">
-                                            <div class="pro-details-rating">
-                                                <i class="fa fa-star-o yellow"></i>
-                                                <i class="fa fa-star-o yellow"></i>
-                                                <i class="fa fa-star-o yellow"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-                                            <span>3 Reviews</span>
-                                        </div>
+                                    <!-- Category -->
+                                    <div class="pro-details-meta">
+                                        <span>Category :</span>
+                                        <ul>
+                                            <li><span
+                                                    id="modalCategory">-</span></li>
+                                        </ul>
+                                    </div>
 
-                                        <!-- Category -->
-                                        <div class="pro-details-meta">
-                                            <span>Category :</span>
-                                            <ul>
-                                                <li><span id="modalCategory">-</span></li>
-                                            </ul>
-                                        </div>
+                                    <!-- Sub Category -->
+                                    <div class="pro-details-meta">
+                                        <span>Sub Category :</span>
+                                        <ul>
+                                            <li><span
+                                                    id="modalSubCategory">-</span></li>
+                                        </ul>
+                                    </div>
 
-                                        <!-- Sub Category -->
-                                        <div class="pro-details-meta">
-                                            <span>Sub Category :</span>
-                                            <ul>
-                                                <li><span id="modalSubCategory">-</span></li>
-                                            </ul>
-                                        </div>
+                                    <!-- Texture -->
+                                    <div class="pro-details-meta">
+                                        <span>Texture :</span>
+                                        <ul>
+                                            <li><span
+                                                    id="modalTexture">-</span></li>
+                                        </ul>
+                                    </div>
 
-                                        <!-- Texture -->
-                                        <div class="pro-details-meta">
-                                            <span>Texture :</span>
-                                            <ul>
-                                                <li><span id="modalTexture">-</span></li>
-                                            </ul>
-                                        </div>
+                                      <!-- Texture -->
+                                    <div class="pro-details-meta">
+                                        <span>Design :</span>
+                                        <ul>
+                                            <li><span
+                                                    id="modalDesign">-</span></li>
+                                        </ul>
+                                    </div>
 
-                                        <!-- Size -->
-                                        <div class="pro-details-meta">
-                                            <span>Size :</span>
-                                            <ul>
-                                                <li><span id="modalSize">-</span></li>
-                                            </ul>
-                                        </div>
+                                    
 
-                                        <!-- Thickness -->
-                                        <div class="pro-details-meta">
-                                            <span>Thickness :</span>
-                                            <ul>
-                                                <li><span id="modalThickness">-</span></li>
-                                            </ul>
-                                        </div>
+                                    <!-- Size -->
+                                    <div class="pro-details-meta">
+                                        <span>Size :</span>
+                                        <ul>
+                                            <li><span
+                                                    id="modalSize">-</span></li>
+                                        </ul>
+                                    </div>
 
-                                        <!-- Width -->
-                                        <div class="pro-details-meta">
-                                            <span>Width :</span>
-                                            <ul>
-                                                <li><span id="modalWidth">-</span></li>
-                                            </ul>
-                                        </div>
+                                    <!-- Thickness -->
+                                    <div class="pro-details-meta">
+                                        <span>Thickness :</span>
+                                        <ul>
+                                            <li><span
+                                                    id="modalThickness">-</span></li>
+                                        </ul>
+                                    </div>
 
-                                        <!-- Social Icons -->
-                                        <div class="pro-details-social mt-3">
-                                            <ul>
-                                                <li>
-                                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fa fa-whatsapp"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <!-- Width -->
+                                    <div class="pro-details-meta">
+                                        <span>Width :</span>
+                                        <ul>
+                                            <li><span
+                                                    id="modalWidth">-</span></li>
+                                        </ul>
+                                    </div>
 
-                                        <!-- Add to Cart -->
-                                        <div class="pro-details-quality mt-4">
-                                            <div class="pro-details-cart btn-hover">
-                                                <a href="#"> Download </a>
-                                            </div>
+                                    <!-- Social Icons -->
+                                    <div class="pro-details-social mt-3">
+                                        <ul>
+                                            <li>
+                                                <a href="#"><i
+                                                        class="fa fa-facebook"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i
+                                                        class="fa fa-instagram"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i
+                                                        class="fa fa-whatsapp"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i
+                                                        class="fa fa-linkedin"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Add to Cart -->
+                                    <div class="pro-details-quality mt-4" style="margin-left: -10px;">
+                                        <div class="pro-details-cart btn-hover">
+                                           <a
+                                        href="/api/product/download/<%= product.productCode %>"> 
+                                        Download
+                                        Product
+                                        Detail</a>
                                         </div>
                                     </div>
                                 </div>
@@ -501,44 +649,38 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal end -->
+        </div>
+        <!-- Modal end -->
 
-
-
-
-
-
-
-
-            <!-- All JS is here
+        <!-- All JS is here
 ============================================ -->
 
-            <script src="/js/vendor/modernizr-3.11.7.min.js"></script>
-            <script src="/js/vendor/jquery-v3.6.0.min.js"></script>
-            <script src="/js/vendor/jquery-migrate-v3.3.2.min.js"></script>
-            <script src="/js/vendor/popper.min.js"></script>
-            <script src="/js/vendor/bootstrap.min.js"></script>
-            <script src="/js/plugins.js"></script>
-            <!-- Ajax Mail -->
-            <script src="/js/ajax-mail.js"></script>
-            <!-- Main JS -->
-            <script src="/js/main.js"></script>
+        <script src="/js/vendor/modernizr-3.11.7.min.js"></script>
+        <script src="/js/vendor/jquery-v3.6.0.min.js"></script>
+        <script src="/js/vendor/jquery-migrate-v3.3.2.min.js"></script>
+        <script src="/js/vendor/popper.min.js"></script>
+        <script src="/js/vendor/bootstrap.min.js"></script>
+        <script src="/js/plugins.js"></script>
+        <!-- Ajax Mail -->
+        <script src="/js/ajax-mail.js"></script>
+        <!-- Main JS -->
+        <script src="/js/main.js"></script>
 
+        <script>
 
-
-            <script>
-                
-                 document.addEventListener("DOMContentLoaded", function () {
+                document.addEventListener("DOMContentLoaded", function () {
                     const exampleModal = document.getElementById("exampleModal");
                     exampleModal.addEventListener("show.bs.modal", function (event) {
                         const button = event.relatedTarget;
 
                         // Extract product info from data-* attributes
-                        const name = button.getAttribute("data-name");
+                        const producttype = button.getAttribute("data-productType");
+                        const name = button.getAttribute("data-name");  
                         const image = button.getAttribute("data-image");
                         const category = button.getAttribute("data-category");
                         const subCategory = button.getAttribute("data-subcategory");
                         const texture = button.getAttribute("data-texture");
+                        const design = button.getAttribute("data-design");
                         const size = button.getAttribute("data-size");
                         const thickness = button.getAttribute("data-thickness");
                         const width = button.getAttribute("data-width");
@@ -546,13 +688,14 @@
                         // Update modal content
                         document.getElementById(
                             "modalProductTitle"
-                        ).innerHTML = `<h2>${name} ${category} ${texture} </h2>`;
+                        ).innerHTML = `<h2> ${producttype} ${name} ${category} ${texture} </h2>`;
                         document.getElementById("modalProductImage").src = image;
                         document.getElementById("modalCategory").textContent = category;
                         document.getElementById("modalSubCategory").textContent = subCategory;
                         document.getElementById("modalTexture").textContent = texture;
+                        document.getElementById("modalDesign").textContent = design;
                         document.getElementById("modalSize").textContent = size;
-                        document.getElementById("modalThickness").textContent = thickness;
+                        document.getElementById("modalThickness").textContent = design;
                         document.getElementById("modalWidth").textContent = width;
                     });
                 });
@@ -560,6 +703,5 @@
 
             </script>
 
-</body>
-
+    </body>
 </html>
