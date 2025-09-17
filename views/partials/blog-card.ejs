@@ -1,0 +1,36 @@
+<% blogs.forEach(blog => { %>
+<div class="col-lg-4 col-md-6 col-sm-12">
+    <div class="blog-wrap-2 mb-30">
+        <div class="blog-img-2">
+            <a href="/blog/<%= blog.url %>">
+                <img src="<%= blog.image %>" alt="<%= blog.title %>">
+            </a>
+        </div>
+        <div class="blog-content-2">
+            <div class="blog-meta-2">
+                <ul>
+                    <li><%= new Date(blog.created_at).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }) %></li>
+                    <li><a href="#">4 <i class="fa fa-comments-o"></i></a></li> <!-- Optional: comments -->
+                </ul>
+            </div>
+            <h4><a href="/blogs/<%= blog.url %>"><%= blog.title %></a></h4>
+            <p><%= blog.text.replace(/<[^>]*>/g, '').substring(0, 100) %>...</p> <!-- Short excerpt -->
+            <div class="blog-share-comment">
+                <div class="blog-btn-2">
+                    <a href="/blogs/<%= blog.url %>">read more</a>
+                </div>
+                <!-- <div class="blog-share">
+                    <span>share :</span>
+                    <div class="share-social">
+                        <ul>
+                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<% }) %>
