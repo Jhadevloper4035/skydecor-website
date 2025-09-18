@@ -93,15 +93,14 @@
         </div>
 
 
-        <section class="rooms1 bg-cream" data-scroll-index="1" style="padding: 70px 0;">
+        <section class="rooms1 bg-cream pt-100" data-scroll-index="1">
             <div class="container">
                 <div class="row text-center">
                     <div class="welcome-content text-center">
-                        <h1 style="text-transform: uppercase;">Our Products</h1>
+                        <h1 style="text-transform: uppercase;">Our Product Range</h1>
                     </div>
                 </div>
-
-                <div class="row mt-5">
+                <div class="row">
                     <!-- Repeat this block for each category -->
 
                     <div class="col-md-4 col-lg-4 col-sm-6 mb-2">
@@ -219,13 +218,14 @@
         </section>
 
 
+        <div class="product-area pt-100 ">
 
-
-
-        <div class="product-area pt-100 pb-100">
             <div class="container">
-                <div class="section-title text-center">
-                    <h2>DAILY DEALS!</h2>
+
+                <div class="row text-center">
+                    <div class="welcome-content text-center">
+                        <h1 style="text-transform: uppercase;">SKYDECOR'S TRENDNG Laminates</h1>
+                    </div>
                 </div>
 
                 <!-- Tabs -->
@@ -315,7 +315,7 @@
         </div>
 
 
-        <section class="about" style="padding-bottom: 70px;">
+        <section class="about pt-100">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 mb-4 animate-box" data-animate-effect="fadeInUp">
@@ -345,7 +345,7 @@
         </section>
 
 
-        <div class="brand-logo-area pb-100 about-brand-logo">
+        <div class="brand-logo-area pt-100 about-brand-logo">
             <div class="container">
                 <div class="brand-logo-active owl-carousel owl-dot-none">
                     <div class="single-brand-logo">
@@ -611,53 +611,39 @@
         <%- include("partials/footer") %>
 
 
+
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                     <div class="modal-content">
+                        <!-- Header -->
                         <div class="modal-header">
+                            <h2 class="modal-title d-none mb-0" id="modalProduct">
+                                Product Name Here
+                            </h2>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+
+                        <!-- Body -->
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-md-5 col-sm-12 col-xs-12">
+                                <!-- Left: Image -->
+                                <div class="col-md-5 col-sm-12">
                                     <div class="tab-content quickview-big-img">
-                                        <div id="pro-1" class="tab-pane fade show active">
-                                            <img src="assets/img/product/quickview-l1.jpg" alt="">
-                                        </div>
-                                        <div id="pro-2" class="tab-pane fade">
-                                            <img src="assets/img/product/quickview-l2.jpg" alt="">
-                                        </div>
-                                        <div id="pro-3" class="tab-pane fade">
-                                            <img src="assets/img/product/quickview-l3.jpg" alt="">
-                                        </div>
-                                        <div id="pro-4" class="tab-pane fade">
-                                            <img src="assets/img/product/quickview-l2.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <!-- Thumbnail Large Image End -->
-                                    <!-- Thumbnail Image End -->
-                                    <div class="quickview-wrap mt-15">
-                                        <div class="quickview-slide-active owl-carousel nav nav-style-1" role="tablist">
-                                            <a class="active" data-bs-toggle="tab" href="#pro-1"><img
-                                                    src="assets/img/product/quickview-s1.jpg" alt=""></a>
-                                            <a data-bs-toggle="tab" href="#pro-2"><img
-                                                    src="assets/img/product/quickview-s2.jpg" alt=""></a>
-                                            <a data-bs-toggle="tab" href="#pro-3"><img
-                                                    src="assets/img/product/quickview-s3.jpg" alt=""></a>
-                                            <a data-bs-toggle="tab" href="#pro-4"><img
-                                                    src="assets/img/product/quickview-s2.jpg" alt=""></a>
+                                        <div class="tab-pane fade show active">
+                                            <img id="modalProductImage" src="/img/product/quickview-l1.jpg"
+                                                alt="Product Image" class="img-fluid" />
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-7 col-sm-12 col-xs-12">
+
+                                <!-- Right: Product Details -->
+                                <div class="col-md-7 col-sm-12">
                                     <div class="product-details-content quickview-content">
-                                        <h2>Products Name Here</h2>
-                                        <div class="product-details-price">
-                                            <span>$18.00 </span>
-                                            <span class="old">$20.00 </span>
-                                        </div>
-                                        <div class="pro-details-rating-wrap">
+                                        <h2 class="mb-4" id="modalProductTitle"></h2>
+
+                                        <!-- Rating Example -->
+                                        <div class="pro-details-rating-wrap mt-2 mb-3">
                                             <div class="pro-details-rating">
                                                 <i class="fa fa-star-o yellow"></i>
                                                 <i class="fa fa-star-o yellow"></i>
@@ -667,82 +653,78 @@
                                             </div>
                                             <span>3 Reviews</span>
                                         </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisic elit eiusm tempor incidid ut
-                                            labore et dolore magna aliqua. Ut enim ad minim venialo quis nostrud
-                                            exercitation ullamco</p>
-                                        <div class="pro-details-list">
+
+                                        <!-- Category -->
+                                        <div class="pro-details-meta">
+                                            <span>Category :</span>
                                             <ul>
-                                                <li>- 0.5 mm Dail</li>
-                                                <li>- Inspired vector icons</li>
-                                                <li>- Very modern style </li>
+                                                <li><span id="modalCategory">-</span></li>
                                             </ul>
                                         </div>
-                                        <div class="pro-details-size-color">
-                                            <div class="pro-details-color-wrap">
-                                                <span>Color</span>
-                                                <div class="pro-details-color-content">
-                                                    <ul>
-                                                        <li class="blue"></li>
-                                                        <li class="maroon active"></li>
-                                                        <li class="gray"></li>
-                                                        <li class="green"></li>
-                                                        <li class="yellow"></li>
-                                                        <li class="white"></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="pro-details-size">
-                                                <span>Size</span>
-                                                <div class="pro-details-size-content">
-                                                    <ul>
-                                                        <li><a href="#">s</a></li>
-                                                        <li><a href="#">m</a></li>
-                                                        <li><a href="#">l</a></li>
-                                                        <li><a href="#">xl</a></li>
-                                                        <li><a href="#">xxl</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+
+                                        <!-- Sub Category -->
+                                        <div class="pro-details-meta">
+                                            <span>Sub Category :</span>
+                                            <ul>
+                                                <li><span id="modalSubCategory">-</span></li>
+                                            </ul>
                                         </div>
-                                        <div class="pro-details-quality">
-                                            <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" type="text" name="qtybutton"
-                                                    value="2">
-                                            </div>
+
+                                        <!-- Texture -->
+                                        <div class="pro-details-meta">
+                                            <span>Texture :</span>
+                                            <ul>
+                                                <li><span id="modalTexture">-</span></li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Size -->
+                                        <div class="pro-details-meta">
+                                            <span>Size :</span>
+                                            <ul>
+                                                <li><span id="modalSize">-</span></li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Thickness -->
+                                        <div class="pro-details-meta">
+                                            <span>Thickness :</span>
+                                            <ul>
+                                                <li><span id="modalThickness">-</span></li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Width -->
+                                        <div class="pro-details-meta">
+                                            <span>Width :</span>
+                                            <ul>
+                                                <li><span id="modalWidth">-</span></li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Social Icons -->
+                                        <div class="pro-details-social mt-3">
+                                            <ul>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-whatsapp"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Add to Cart -->
+                                        <div class="pro-details-quality mt-4">
                                             <div class="pro-details-cart btn-hover">
-                                                <a href="#">Add To Cart</a>
+                                                <a href="#"> Download </a>
                                             </div>
-                                            <div class="pro-details-wishlist">
-                                                <a href="#"><i class="fa fa-heart-o"></i></a>
-                                            </div>
-                                            <div class="pro-details-compare">
-                                                <a href="#"><i class="pe-7s-shuffle"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="pro-details-meta">
-                                            <span>Categories :</span>
-                                            <ul>
-                                                <li><a href="#">Minimal,</a></li>
-                                                <li><a href="#">Furniture,</a></li>
-                                                <li><a href="#">Electronic</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="pro-details-meta">
-                                            <span>Tag :</span>
-                                            <ul>
-                                                <li><a href="#">Fashion, </a></li>
-                                                <li><a href="#">Furniture,</a></li>
-                                                <li><a href="#">Electronic</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="pro-details-social">
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -769,6 +751,42 @@
             <script src="/js/plugins.js"></script>
             <script src="/js/ajax-mail.js"></script>
             <script src="/js/main.js"></script>
+
+
+
+            <script>
+
+                document.addEventListener("DOMContentLoaded", function () {
+                    const exampleModal = document.getElementById("exampleModal");
+                    exampleModal.addEventListener("show.bs.modal", function (event) {
+                        const button = event.relatedTarget;
+
+                        // Extract product info from data-* attributes
+                        const name = button.getAttribute("data-name");
+                        const image = button.getAttribute("data-image");
+                        const category = button.getAttribute("data-category");
+                        const subCategory = button.getAttribute("data-subcategory");
+                        const texture = button.getAttribute("data-texture");
+                        const size = button.getAttribute("data-size");
+                        const thickness = button.getAttribute("data-thickness");
+                        const width = button.getAttribute("data-width");
+
+                        // Update modal content
+                        document.getElementById(
+                            "modalProductTitle"
+                        ).innerHTML = `<h2>${name} ${category} ${texture} </h2>`;
+                        document.getElementById("modalProductImage").src = image;
+                        document.getElementById("modalCategory").textContent = category;
+                        document.getElementById("modalSubCategory").textContent = subCategory;
+                        document.getElementById("modalTexture").textContent = texture;
+                        document.getElementById("modalSize").textContent = size;
+                        document.getElementById("modalThickness").textContent = thickness;
+                        document.getElementById("modalWidth").textContent = width;
+                    });
+                });
+
+
+            </script>
 
 </body>
 </html>

@@ -76,7 +76,6 @@ exports.getProducts = async (req, res) => {
       );
     }
 
-    console.log(categories)
 
     // Full page load
     res.render("product", {

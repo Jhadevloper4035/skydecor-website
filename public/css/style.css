@@ -1,52 +1,11 @@
 @charset "UTF-8";
-/*-----------------------------------------------------------------------------------
 
-    Template Name: Flone - Minimal eCommerce HTML Template
-    Version: 2.5
 
------------------------------------------------------------------------------------
 
-    CSS INDEX
-    ===================
-
-    1. Template default CSS
-    2. Header style
-    3. Slider style
-    4. Support style
-    5. Section title style
-    6. Product style
-    7. Blog style
-    8. Footer style
-    9. Banner style
-    10. Suscribe style
-    11. About style
-    12. instagram style
-    13. Testimonial style
-    14. Brand logo style
-    15. Timer style
-    16. Breadcrumb style
-    17. Sidebar style
-    18. Shop page
-    19. Product details page
-    20. Cart page
-    21. Checkout page
-    22. contact Page
-    23. Blog Details Page
-    24. login register Page
-    25. My account Page
-    26. 404 Page
-
------------------------------------------------------------------------------------*/
-
-/*----------------------------------------*/
-
-/*  1. Template default CSS
-/*----------------------------------------*/
-
-/*-- Google Font --*/
 
 @import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,400,500,600,700|Poppins:300,400,500,600,700,800,900|Josefin+Sans:wght@300;400;500;600;700|Abril+Fatface|Great+Vibe|Lobster&display=swap");
-/*-- Common Style --*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 
 @media only screen and (min-width: 1200px) {
   .container {
@@ -102,7 +61,7 @@ body {
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #000;
 }
 
@@ -610,9 +569,7 @@ a:hover {
   margin-left: 60px;
 }
 
-.ml-70 {
-  margin-left: 70px;
-}
+
 
 .ml-75 {
   margin-left: 75px;
@@ -1480,9 +1437,7 @@ a:hover {
   margin: 290px 0;
 }
 
-/*-- 
-    - Input Placeholder
------------------------------------------*/
+
 
 input:-moz-placeholder,
 textarea:-moz-placeholder {
@@ -2517,7 +2472,7 @@ a.default-btn {
   font-weight: 500;
   letter-spacing: 0.8px;
   display: inline-block;
-  line-height: 94px;
+  line-height: 80px;
   text-transform: uppercase;
 }
 
@@ -11287,10 +11242,7 @@ a.default-btn {
 
 /* blog page */
 
-.blog-wrap-2 {
-  -webkit-box-shadow: 0 3px 5px rgba(85, 85, 85, 0.2);
-  box-shadow: 0 3px 5px rgba(85, 85, 85, 0.2);
-}
+
 
 .blog-wrap-2 .blog-img-2 {
   overflow: hidden;
@@ -11332,6 +11284,7 @@ a.default-btn {
 
 .blog-wrap-2 .blog-content-2 {
   padding: 25px 30px 34px;
+  background-color: #f6f3f3;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -11400,11 +11353,13 @@ a.default-btn {
   font-weight: 500;
   margin: 10px 0 20px;
   color: #333;
+  font-weight: 400;
+  line-height: 1.4;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .blog-wrap-2 .blog-content-2 h4 {
-    font-size: 19px;
+    font-size: 18px;
   }
 }
 
@@ -11809,7 +11764,7 @@ a.default-btn {
 .footer-widget .footer-title h3 {
   font-size: 16px;
   font-weight: 500;
-  color: #313131;
+  color: #fff;
   margin: 0 0 16px;
   line-height: 1;
 }
@@ -11823,7 +11778,7 @@ a.default-btn {
 }
 
 .footer-widget .footer-list ul li a {
-  color: #5d5d5d;
+  color: #fff;
   letter-spacing: 0.3px;
 }
 
@@ -11836,7 +11791,7 @@ a.default-btn {
 }
 
 .footer-widget.footer-widget-white .footer-list ul li a {
-  color: #e6e6e6;
+  color: #fff;
 }
 
 .footer-widget.footer-widget-white .footer-list ul li a:hover {
@@ -11844,7 +11799,7 @@ a.default-btn {
 }
 
 .footer-widget .subscribe-style p {
-  color: #7a7a7a;
+  color: #fff;
   margin: 0 0 20px;
 }
 
@@ -11864,7 +11819,7 @@ a.default-btn {
 .footer-widget .subscribe-style .subscribe-form form .clear input {
   width: auto;
   height: auto;
-  color: #313131;
+  color: #fff;
   font-size: 14px;
   padding: 0 0 1px;
   line-height: 1;
@@ -18845,7 +18800,8 @@ button.mfp-arrow {
 .job-title {
   color: #2b3d51;
   font-size: 1.15rem;
-  font-weight: 600;
+    font-weight: 400;
+    line-height: 1.6;
 }
 
 .view-btn {
@@ -20534,7 +20490,7 @@ div:hover > .ttm-box-view-overlay:before {
 .rooms1 .item .con h5 a {
   position: relative;
   color: #fff;
-  font-size: 27px;
+  font-size: 22px;
   font-weight: 400;
   margin-top: 1px;
   margin-bottom: 0px;
@@ -20774,4 +20730,137 @@ video {
 .single-brand-logo img{
   height: 70%;
   width: 70%;
+}
+
+
+/* loding screen  */
+
+
+:root {
+    --size: 140px;           /* loader size */
+    --primary: #6d4c41;      /* deep wood brown */
+    --secondary: #a1887f;    /* lighter laminate */
+    --bg: #fdfdfd;           /* background */
+  }
+
+  .loader-overlay {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: var(--bg);
+    z-index: 9999;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
+
+  /* Hidden state (activated after page load) */
+  .loader-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .ply-loader {
+    width: var(--size);
+    height: var(--size);
+  }
+
+  /* Plank stacking animation */
+  @keyframes stack {
+    0% {
+      transform: translateY(40px) scale(0.95);
+      opacity: 0;
+    }
+    40% {
+      transform: translateY(-6px) scale(1.02);
+      opacity: 1;
+    }
+    70%,100% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Floating dot animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(-10px);
+      opacity: 1;
+    }
+  }
+
+  .ply {
+    transform-origin: 50% 50%;
+    animation: stack 2.2s cubic-bezier(.25,.9,.35,1) infinite;
+  }
+
+  .ply:nth-child(2) {
+    fill: var(--secondary);
+    animation-delay: 0.3s;
+  }
+
+  .ply:nth-child(3) {
+    fill: var(--primary);
+    animation-delay: 0.6s;
+  }
+
+  .dot {
+    animation: float 2s ease-in-out infinite;
+  }
+
+
+  /* breadcrumbs */
+
+ .breadcrumb-area {
+  min-height: 65vh; /* default for larger screens */
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* keeps content centered */
+  padding: 40px 20px; /* fallback spacing */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .breadcrumb-area {
+    min-height: 35vh;
+    padding: 30px 15px;
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) {
+  .breadcrumb-area {
+    min-height: 30vh;
+    padding: 25px 12px;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+  .breadcrumb-area {
+    min-height: 25vh;
+    padding: 20px 10px;
+  }
+}
+
+
+.main-menu nav ul li:hover a {
+    color: #000000;
+}
+
+.welcome-content .h1, .welcome-content h1 {
+    color: #433f3f;
+    font-size: 35px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 2;
+    margin: 8px 0 30px;
 }

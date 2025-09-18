@@ -10,8 +10,11 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png" />
 
-    <!-- CSS
-	============================================ -->
+    <!-- CSS ============================================ -->
+
+
+    <!-- Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
@@ -115,7 +118,7 @@
                                 <ul>
                                     <% for (let i=1; i <=pages; i++) { %>
                                         <li class="<%= i === page ? 'active' : '' %>">
-                                            <a href="">
+                                            <a href="/api/product/PVC?&page=<%= i %>">
                                                 <%= i %>
                                             </a>
                                         </li>
@@ -409,8 +412,6 @@
                     });
                 });
 
-
-
                 document.addEventListener("DOMContentLoaded", function () {
                     const filterForm = document.querySelector("#filterForm");
                     const shopArea = document.querySelector("#shop-area");
@@ -480,10 +481,6 @@
                         }
                     });
                 });
-
-
-
-
             </script>
 </body>
 </html>
