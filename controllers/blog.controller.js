@@ -49,7 +49,6 @@ exports.getSingleBlogs = async (req, res) => {
       .sort({ createdAt: -1 }) // newest first
       .limit(5);
 
-      console.log(recentBlogs)
 
     // Render EJS views
     res.render("single-blog", {
