@@ -149,8 +149,6 @@ exports.getAllCategoryProduct = async (req, res) => {
     const { productType } = req.params;
     const { category } = req.query;
 
-    console.log("➡️ Params:", productType, "➡️ Query:", category);
-
     // Build query dynamically
     const query = { productType };
     if (category) query.category = category;
