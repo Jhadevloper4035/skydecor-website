@@ -859,10 +859,9 @@
 
   
     const loader = document.getElementById("site-loader");
-
-  window.addEventListener("load", () => {
-    // Immediately fade out when page finishes loading
+    window.addEventListener("load", () => {
     loader.classList.add("hidden");
-  });
+  
+    });
 
 })(jQuery);

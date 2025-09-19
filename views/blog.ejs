@@ -27,17 +27,7 @@
 
 
 
-    <div id="site-loader" class="loader-overlay">
-  <svg class="ply-loader" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <!-- Laminates -->
-    <rect class="ply" x="20" y="65" width="60" height="8" rx="2" fill="var(--primary)" />
-    <rect class="ply" x="20" y="50" width="60" height="8" rx="2" fill="var(--primary)" />
-    <rect class="ply" x="20" y="35" width="60" height="8" rx="2" fill="var(--primary)" />
-
-    <!-- Accent dot -->
-    <circle class="dot" cx="50" cy="20" r="4" fill="var(--primary)" />
-  </svg>
-</div>
+   
 
 
 
@@ -61,12 +51,21 @@
 
         <div class="Blog-area pt-100 pb-100 blog-no-sidebar">
             <div class="container">
+
+                 <!-- Section Heading -->
+                <div class="row text-center">
+                    <div class="welcome-content text-center">
+                        <h1 class="fw-light" style="text-transform: uppercase;">
+                       The SkyDecor Journal
+                        </h1>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
                             <%- include('partials/blog-card', { blogs: blogs }) %>
                         </div>
-                        
                     </div>
                 </div>
             </div>

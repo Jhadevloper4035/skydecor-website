@@ -18808,7 +18808,7 @@ button.mfp-arrow {
 /* Job card custom */
 
 .job-card {
-  background: rgba(128, 201, 228, 0.302);
+  background: #f6f3f3;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
   margin-bottom: 25px;
