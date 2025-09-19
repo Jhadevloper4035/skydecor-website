@@ -65,7 +65,7 @@ app.get("/contact-us", (req, res) => {
 });
 
 app.get("/about-us", (req, res) => {
-  res.render("contact", {
+  res.render("about", {
     title: "conatct Page",
     message: "Welcome to EJS with Static Files!",
   });
@@ -77,5 +77,11 @@ app.get("/customer-review", (req, res) => {
     message: "Welcome to EJS with Static Files!",
   });
 });
+
+
+
+
+
+
 
 module.exports = app;

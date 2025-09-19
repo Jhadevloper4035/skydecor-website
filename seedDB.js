@@ -21,8 +21,8 @@ ConnectDB();
 async function seedDB() {
   try {
     // Remove old data
-    //await Product.deleteMany({});
-    // console.log("🗑 Old products removed");
+    await Product.deleteMany({});
+    console.log("🗑 Old products removed");
 
     //await Event.deleteMany({})
     // console.log("🗑 Old events removed");
@@ -31,8 +31,8 @@ async function seedDB() {
     //console.log("🗑 Old Blogs removed");
 
     // Insert new data product
-    //await Product.insertMany(products);
-    // console.log(`✅ ${products.length} products inserted successfully!`);
+    await Product.insertMany(products);
+    console.log(`✅ ${products.length} products inserted successfully!`);
 
     // Insert new Event data product
     // await Event.insertMany(events)
@@ -44,8 +44,8 @@ async function seedDB() {
     // await Job.insertMany(jobs)
     // console.log(`✅ ${jobs.length} jobs inserted successfully!`);
 
-    await Testimonial.insertMany(testimonials);
-    console.log(`✅ ${testimonials.length} jobs inserted successfully!`);
+    //await Testimonial.insertMany(testimonials);
+    //console.log(`✅ ${testimonials.length} jobs inserted successfully!`);
 
     mongoose.connection.close();
   } catch (err) {
